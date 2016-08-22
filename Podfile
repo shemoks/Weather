@@ -6,4 +6,6 @@
 
 target 'Weather' do
  pod 'RealmSwift', '~> 1.0.2'
+ pod 'Alamofire', '~> 3.4'
+ pod 'SwiftyJSON'
 end

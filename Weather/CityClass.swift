@@ -14,7 +14,7 @@ class Cities: Object {
     
     dynamic var name = ""
     dynamic var descriptionValue = ""
-  //  var temperature = Array<Temperature>()
+  //  var temperature = List<Temperature>()
     
     
     func citiesCount() -> Int {
@@ -99,11 +99,10 @@ class Cities: Object {
 //        })
     }
     
-//    func getObjectTemp (nameCity: String) -> Array<Temperature> {
+//    func getObjectTemp (nameCity: String) -> Results<Temperature> {
 //        let realm = try! Realm()
 //        let queryTemperature = realm.objects(Temperature.self).filter("name = '\(nameCity)'")
-//        let arrayOfCities = Array(queryTemperature)
-//        self.temperature = arrayOfCities
+//        self.temperature = queryTemperature
 //        return self.temperature
 //    }
 
