@@ -17,7 +17,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     @IBOutlet weak var imageGeneral: UIImageView!
     @IBOutlet weak var conditions: UILabel!
     @IBOutlet weak var collectionView: UICollectionView?
-    var dayWeather: [weather] = []
+    var dayWeather = CityModel()
     var pageIndex: Int = 0
     
       var defaultCoord = location(long: 0, lat: 0)
@@ -76,11 +76,11 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
             collectionView!.dataSource = self
             collectionView!.delegate = self
             collectionView!.setCollectionViewLayout(layout, animated: false)
-        let imgURL: NSURL = NSURL(string: dayWeather[0].iconUrl)!
+            let imgURL: NSURL = NSURL(string: dayWeather.temperature[0].image)!
         let imgData: NSData = NSData(contentsOfURL: imgURL)!
         self.imageGeneral.image = UIImage(data: imgData)
-        self.tempGeneral.text = dayWeather[0].hight
-        self.city.text = dayWeather[0].titleLong
+        self.tempGeneral.text = dayWeather.temperature[0].tempMax
+        self.city.text = dayWeather.name
 
 //        let result = JsonClass()
 //        result.parsJsonForLocation { [weak self] (objects) in
@@ -108,16 +108,16 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if dayWeather.count > 5 {
+        if dayWeather.temperature.count > 5 {
             return 5
         } else {
-            return dayWeather.count
+            return dayWeather.temperature.count
         }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! CollectionViewCell
-        cell.setCell(dayWeather[indexPath.item])
+        cell.setCell(dayWeather.temperature[indexPath.item])
         return cell
     }
     

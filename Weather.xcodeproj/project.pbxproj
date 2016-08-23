@@ -25,12 +25,9 @@
 		9A8B17BE1D61E10800FB27AC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8B17BA1D61E0F600FB27AC /* Realm.framework */; };
 		9A8B17CA1D61E80600FB27AC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8B17C81D61E80600FB27AC /* Realm.framework */; };
 		9A8B17CE1D61E81D00FB27AC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8B17C91D61E80600FB27AC /* RealmSwift.framework */; };
-		9A8B17D31D62094B00FB27AC /* CityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17D21D62094B00FB27AC /* CityClass.swift */; };
-		9A8B17D51D6332E200FB27AC /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17D41D6332E200FB27AC /* Temperature.swift */; };
 		9A8B17D71D67496F00FB27AC /* ConteinerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17D61D67496F00FB27AC /* ConteinerView.swift */; };
 		9A8B17D91D6B242500FB27AC /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17D81D6B242500FB27AC /* CityModel.swift */; };
 		9A8B17DB1D6B2BE200FB27AC /* HelperCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17DA1D6B2BE200FB27AC /* HelperCity.swift */; };
-		9A8B17DD1D6B32B100FB27AC /* HelperTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17DC1D6B32B100FB27AC /* HelperTemperature.swift */; };
 		9A8B17DF1D6B341C00FB27AC /* TemperatureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17DE1D6B341C00FB27AC /* TemperatureModel.swift */; };
 		A7B4222987E007FD83F4D0D8 /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A283DE68E0A6171A77B47956 /* Pods_Weather.framework */; };
 /* End PBXBuildFile section */
@@ -92,12 +89,9 @@
 		9A8B17BB1D61E0F600FB27AC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = /Users/MacMini/Documents/Weather/Weather/RealmSwift.framework; sourceTree = "<absolute>"; };
 		9A8B17C81D61E80600FB27AC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = /Users/MacMini/Documents/Weather/Weather/Realm.framework; sourceTree = "<absolute>"; };
 		9A8B17C91D61E80600FB27AC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = /Users/MacMini/Documents/Weather/Weather/RealmSwift.framework; sourceTree = "<absolute>"; };
-		9A8B17D21D62094B00FB27AC /* CityClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityClass.swift; sourceTree = "<group>"; };
-		9A8B17D41D6332E200FB27AC /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		9A8B17D61D67496F00FB27AC /* ConteinerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConteinerView.swift; sourceTree = "<group>"; };
 		9A8B17D81D6B242500FB27AC /* CityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		9A8B17DA1D6B2BE200FB27AC /* HelperCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperCity.swift; sourceTree = "<group>"; };
-		9A8B17DC1D6B32B100FB27AC /* HelperTemperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperTemperature.swift; sourceTree = "<group>"; };
 		9A8B17DE1D6B341C00FB27AC /* TemperatureModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureModel.swift; sourceTree = "<group>"; };
 		A283DE68E0A6171A77B47956 /* Pods_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -170,12 +164,9 @@
 				9A8B17B21D5B337E00FB27AC /* UserLocation.swift */,
 				9A8B17B41D5C6CF900FB27AC /* CollectionViewCell.swift */,
 				9A8B17B81D5E172700FB27AC /* PageViewController.swift */,
-				9A8B17D21D62094B00FB27AC /* CityClass.swift */,
-				9A8B17D41D6332E200FB27AC /* Temperature.swift */,
 				9A8B17D61D67496F00FB27AC /* ConteinerView.swift */,
 				9A8B17D81D6B242500FB27AC /* CityModel.swift */,
 				9A8B17DA1D6B2BE200FB27AC /* HelperCity.swift */,
-				9A8B17DC1D6B32B100FB27AC /* HelperTemperature.swift */,
 				9A8B17DE1D6B341C00FB27AC /* TemperatureModel.swift */,
 			);
 			path = Weather;
@@ -420,14 +411,11 @@
 				9A8B17B11D5B265C00FB27AC /* JsonClass.swift in Sources */,
 				9A8B17B51D5C6CF900FB27AC /* CollectionViewCell.swift in Sources */,
 				9A8B17D71D67496F00FB27AC /* ConteinerView.swift in Sources */,
-				9A8B17DD1D6B32B100FB27AC /* HelperTemperature.swift in Sources */,
 				9A8B17B31D5B337E00FB27AC /* UserLocation.swift in Sources */,
 				9A8B177C1D59BB6100FB27AC /* AppDelegate.swift in Sources */,
-				9A8B17D31D62094B00FB27AC /* CityClass.swift in Sources */,
 				9A8B17D91D6B242500FB27AC /* CityModel.swift in Sources */,
 				9A8B17DF1D6B341C00FB27AC /* TemperatureModel.swift in Sources */,
 				9A8B17AF1D5B109A00FB27AC /* MapViewController.swift in Sources */,
-				9A8B17D51D6332E200FB27AC /* Temperature.swift in Sources */,
 				9A8B17B91D5E172700FB27AC /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

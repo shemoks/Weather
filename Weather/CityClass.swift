@@ -14,22 +14,22 @@ class Cities: Object {
     
     dynamic var name = ""
     dynamic var descriptionValue = ""
-  //  var temperature = List<Temperature>()
+    //  var temperature = List<Temperature>()
     
     
-    func citiesCount() -> Int {
-        
-        let realm = try! Realm()
-        let cities = realm.objects(Cities.self)
-        let arrayOfCities = Array(cities)
-        return arrayOfCities.count
-    }
+//    func citiesCount() -> Int {
+//        
+//        let realm = try! Realm()
+//        let cities = realm.objects(Cities.self)
+//        let arrayOfCities = Array(cities)
+//        return arrayOfCities.count
+//    }
+//    
     
-   
     
     static func addToDataBase(completion: () -> ()) {
         let json = JsonClass()
-        json.parsJsonForLocation {(objects) in
+        json.parsJson {(objects) in
             if !objects.isEmpty {
                 let city = objects[0].titleLong
                 var realm = try! Realm()
@@ -93,18 +93,8 @@ class Cities: Object {
                 }
             }
         }
-       
-//        dispatch_async(dispatch_get_main_queue(), {
-//            completion()
-//        })
+        
     }
     
-//    func getObjectTemp (nameCity: String) -> Results<Temperature> {
-//        let realm = try! Realm()
-//        let queryTemperature = realm.objects(Temperature.self).filter("name = '\(nameCity)'")
-//        self.temperature = queryTemperature
-//        return self.temperature
-//    }
-
 }
 

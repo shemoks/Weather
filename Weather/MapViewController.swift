@@ -24,7 +24,7 @@ class MapViewController: UIViewController, UISearchBarDelegate   {
     var weatherCity = location (long: 0.00, lat:0.00)
     
     @IBAction func saveClicked(sender: AnyObject) {
-        Cities.addToDataBase{}
+        CityModel.addToDataBase{}
     }
 
     @IBAction func showSearchBar(sender: AnyObject) {

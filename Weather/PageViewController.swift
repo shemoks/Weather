@@ -12,7 +12,7 @@ import CoreLocation
 
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
-    var arrayData: [[weather]] = []
+    var arrayData: [CityModel] = []
     var defaultCoord = location(long: 0, lat: 0)
     var count = 0
     var orderedViewControllers: [UIViewController] = []
@@ -46,19 +46,15 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             defaultCoord.lat = 51.508530
             defaultCoord.long = -0.076132
             UserLocation.setUserLocation(defaultCoord)
-            Cities.addToDataBase{
+            CityModel.addToDataBase{
                 self.dataForViewController { object in
                     self.sourceForView()
                 }
                 
             }
-            // performSegueWithIdentifier("ShowMap", sender: self)
         }
         
     }
-    
-    
-    // перегружаете метод и реализуете передачу параметров
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -68,7 +64,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         defaultCoord.lat = locValue!.coordinate.latitude
         defaultCoord.long = locValue!.coordinate.longitude
         UserLocation.setUserLocation(defaultCoord)
-        Cities.addToDataBase{
+        CityModel.addToDataBase{
             self.dataForViewController { object in
                 self.sourceForView()
             }
@@ -77,7 +73,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     override func viewDidAppear(animated: Bool) {
+        setView()
         
+    }
+    func setView() {
+   
         self.dataForViewController { object in
             self.orderedViewControllers = []
             self.controllers = []
@@ -95,8 +95,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             }
             
         }
-        
-        
+      
     }
     
     func sourceForView() {
@@ -121,25 +120,13 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
     }
     
-    
-    
-    func dataForViewController (getData: ([[weather]]) -> ()) {
-        arrayData = []
-        let realm = try! Realm()
-        let cities = realm.objects(Cities.self)
-        let arrayOfCities = Array(cities)
-        for city in arrayOfCities {
-            let cityName = city.name
-            let temperatureArray = Temperature()
-            let queryTemp = temperatureArray.getTemperature(cityName)
-            arrayData.append(queryTemp)
-        }
+    func dataForViewController (getData: ([CityModel]) -> ()) {
+        let cities = HelperCity.getAllCity()
+        arrayData = cities
         dispatch_async(dispatch_get_main_queue(), {
             getData(self.arrayData)
         })
     }
- 
-
     
     func getViewControllerAtIndex(index: NSInteger) -> ViewController
     {
@@ -177,37 +164,15 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         return nil
     }
     
-    func removeView(pageViewController: UIPageViewController) {
-        if let firstViewController = viewControllers?.first {
-            let firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController)
-            if  firstViewControllerIndex > 0 { let arrayOfStruct = arrayData[firstViewControllerIndex!]
-            for desidedStruct in arrayOfStruct {
-            let cityName = desidedStruct.titleLong
-                Temperature().deleteFromDataBase(cityName)
-                break
-            }
-            }
-            
-        }
-        
-        self.dataForViewController { object in
-            self.orderedViewControllers = []
-            self.controllers = []
-            self.count = object.count
-            if self.count > 0 {
-                for i in 0...self.count - 1 {
-                    let newViewController = ViewController()
-                    newViewController.pageIndex = i
-                    self.controllers.append(newViewController)
-                    let controller = self.getViewControllerAtIndex(i)
-                    self.orderedViewControllers.append(controller)
-                    
+        func removeView(pageViewController: UIPageViewController) {
+            if let firstViewController = viewControllers?.first {
+                let firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController)
+                if  firstViewControllerIndex > 0 { let object = arrayData[firstViewControllerIndex!]
+                HelperCity.deleteObject(object)
                 }
-                self.sourceForViewNext()
-            }
-            
-        }
-    }
-   
     
+            }
+    
+          setView()
+        }
 }

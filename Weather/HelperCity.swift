@@ -14,7 +14,7 @@ class HelperCity {
     static func findCity(cityName: String) -> Bool {
     
     let realm = try! Realm()
-    let queryCity = realm.objects(Cities.self).filter("name = '\(cityName)'")
+    let queryCity = realm.objects(CityModel.self).filter("name = '\(cityName)'")
     if queryCity.isEmpty {
         return false
         
@@ -42,6 +42,16 @@ class HelperCity {
         try! Realm().write() {
             try! Realm().delete(cheeseCity)
         }
+    }
+    static func deleteObject(obj: CityModel ) {
+          try! Realm().write() {
+            try! Realm().delete(obj)
+        }
+    }
+    static func countByName(name: String) -> Int {
+        let cheeseCity = try!Realm().objects(CityModel).filter("name = '\(name)'")
+        let count = cheeseCity.count
+        return count
     }
     
     static func updateCity(obj: CityModel ) {
