@@ -12,15 +12,11 @@ import RealmSwift
 
 
 class CityModel: Object{
-    
     dynamic var name = ""
     dynamic var descriptionValue = ""
     var temperature = List<TemperatureModel>()
-    
     override static func primaryKey() -> String? {
-        
         return "name"
-        
     }
     
     static func addToDataBase(completion: () -> ()) {
@@ -53,7 +49,6 @@ class CityModel: Object{
                     dispatch_async(dispatch_get_main_queue(), {
                         completion()
                     })
-                    
                 } else {
                     
                     let cityData = CityModel()
@@ -63,7 +58,6 @@ class CityModel: Object{
                     dispatch_async(dispatch_get_main_queue(), {
                         completion()
                     })
-                    
                 }
             }
         }

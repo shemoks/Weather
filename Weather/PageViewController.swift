@@ -19,27 +19,20 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     var controllers: [UIViewController] = []
     var pageViewController : UIPageViewController!
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocation ()
-        
     }
     
     func getLocation(){
         
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
-        
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        // 3
         if status == .AuthorizedWhenInUse {
             
-            // 4
             self.locationManager.startUpdatingLocation()
         }
         if status == .Denied {
@@ -50,10 +43,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
                 self.dataForViewController { object in
                     self.sourceForView()
                 }
-                
             }
         }
-        
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -68,7 +59,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             self.dataForViewController { object in
                 self.sourceForView()
             }
-            
         }
     }
     
@@ -76,8 +66,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         setView()
         
     }
+    
     func setView() {
-   
         self.dataForViewController { object in
             self.orderedViewControllers = []
             self.controllers = []
@@ -89,13 +79,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
                     self.controllers.append(newViewController)
                     let controller = self.getViewControllerAtIndex(i)
                     self.orderedViewControllers.append(controller)
-                    
                 }
                 self.sourceForViewNext()
             }
-            
         }
-      
     }
     
     func sourceForView() {
@@ -111,13 +98,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func sourceForViewNext() {
-        
         var firstElement: [UIViewController] = []
         firstElement.append(orderedViewControllers[0])
-        
-        
         self.setViewControllers( firstElement as [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
-        
     }
     
     func dataForViewController (getData: ([CityModel]) -> ()) {
@@ -139,8 +122,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         return ViewControllers
     }
     
-    
-    
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
     {
         if let viewControllerIndex = orderedViewControllers.indexOf(viewController) {
@@ -151,7 +132,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         }
         return nil
     }
-    
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
@@ -164,15 +144,14 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         return nil
     }
     
-        func removeView(pageViewController: UIPageViewController) {
-            if let firstViewController = viewControllers?.first {
-                let firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController)
-                if  firstViewControllerIndex > 0 { let object = arrayData[firstViewControllerIndex!]
+    func removeView(pageViewController: UIPageViewController) {
+        if let firstViewController = viewControllers?.first {
+            let firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController)
+            if  firstViewControllerIndex > 0 { let object = arrayData[firstViewControllerIndex!]
                 HelperCity.deleteObject(object)
-                }
-    
             }
-    
-          setView()
         }
+        
+        setView()
+    }
 }

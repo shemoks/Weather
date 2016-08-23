@@ -17,22 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
       
-print(Realm.Configuration.defaultConfiguration.fileURL)
-//
-//        let city = Cities()
-//        city.name = "Cherkasy"
-//        
-//        
-//         let realm = try! Realm()
-//
-//        try! realm.write {
-//            realm.add(city)
-//        }
-//        try! realm.write {
-//            realm.deleteAll()
-//        }
-//        
-        
+    print(Realm.Configuration.defaultConfiguration.fileURL)
+
         return true
     }
 

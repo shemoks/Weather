@@ -13,7 +13,6 @@
 		9A8B17861D59BB6100FB27AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A8B17841D59BB6100FB27AC /* LaunchScreen.storyboard */; };
 		9A8B17911D59BB6100FB27AC /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17901D59BB6100FB27AC /* WeatherTests.swift */; };
 		9A8B179C1D59BB6100FB27AC /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B179B1D59BB6100FB27AC /* WeatherUITests.swift */; };
-		9A8B17AA1D5A260C00FB27AC /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17A91D5A260C00FB27AC /* WeatherViewController.swift */; };
 		9A8B17AD1D5B0FFF00FB27AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A8B17AB1D5B0FFF00FB27AC /* Main.storyboard */; };
 		9A8B17AF1D5B109A00FB27AC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17AE1D5B109A00FB27AC /* MapViewController.swift */; };
 		9A8B17B11D5B265C00FB27AC /* JsonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17B01D5B265C00FB27AC /* JsonClass.swift */; };
@@ -77,7 +76,6 @@
 		9A8B17971D59BB6100FB27AC /* WeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A8B179B1D59BB6100FB27AC /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		9A8B179D1D59BB6100FB27AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A8B17A91D5A260C00FB27AC /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		9A8B17AC1D5B0FFF00FB27AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A8B17AE1D5B109A00FB27AC /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9A8B17B01D5B265C00FB27AC /* JsonClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonClass.swift; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 				9A8B17821D59BB6100FB27AC /* Assets.xcassets */,
 				9A8B17841D59BB6100FB27AC /* LaunchScreen.storyboard */,
 				9A8B17871D59BB6100FB27AC /* Info.plist */,
-				9A8B17A91D5A260C00FB27AC /* WeatherViewController.swift */,
 				9A8B17AE1D5B109A00FB27AC /* MapViewController.swift */,
 				9A8B17B01D5B265C00FB27AC /* JsonClass.swift */,
 				9A8B17B21D5B337E00FB27AC /* UserLocation.swift */,
@@ -407,7 +404,6 @@
 			files = (
 				9A8B17DB1D6B2BE200FB27AC /* HelperCity.swift in Sources */,
 				9A8B177E1D59BB6100FB27AC /* ViewController.swift in Sources */,
-				9A8B17AA1D5A260C00FB27AC /* WeatherViewController.swift in Sources */,
 				9A8B17B11D5B265C00FB27AC /* JsonClass.swift in Sources */,
 				9A8B17B51D5C6CF900FB27AC /* CollectionViewCell.swift in Sources */,
 				9A8B17D71D67496F00FB27AC /* ConteinerView.swift in Sources */,

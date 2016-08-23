@@ -11,8 +11,6 @@ import MapKit
 import RealmSwift
 
 class MapViewController: UIViewController, UISearchBarDelegate   {
-  
-    
     var searchController:UISearchController!
     var annotation:MKAnnotation!
     var localSearchRequest:MKLocalSearchRequest!
@@ -26,7 +24,7 @@ class MapViewController: UIViewController, UISearchBarDelegate   {
     @IBAction func saveClicked(sender: AnyObject) {
         CityModel.addToDataBase{}
     }
-
+    
     @IBAction func showSearchBar(sender: AnyObject) {
         searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
@@ -37,20 +35,18 @@ class MapViewController: UIViewController, UISearchBarDelegate   {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
-        //1
         searchBar.resignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
         if self.mapView.annotations.count != 0{
             annotation = self.mapView.annotations[0]
             self.mapView.removeAnnotation(annotation)
         }
-        //2
         localSearchRequest = MKLocalSearchRequest()
         localSearchRequest.naturalLanguageQuery = searchBar.text
         localSearch = MKLocalSearch(request: localSearchRequest)
@@ -62,15 +58,14 @@ class MapViewController: UIViewController, UISearchBarDelegate   {
                 self.presentViewController(alertController, animated: true, completion: nil)
                 return
             }
-            //3
             self.pointAnnotation = MKPointAnnotation()
             self.pointAnnotation.title = searchBar.text
             self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:     localSearchResponse!.boundingRegion.center.longitude)
             self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
             self.mapView.centerCoordinate = self.pointAnnotation.coordinate
             self.mapView.addAnnotation(self.pinAnnotationView.annotation!)
-         
-           
+            
+            
             self.weatherCity.lat = self.pointAnnotation.coordinate.latitude
             self.weatherCity.long = self.pointAnnotation.coordinate.longitude
             UserLocation.setUserLocation(self.weatherCity)
