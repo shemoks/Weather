@@ -22,4 +22,5 @@ class TemperatureModel: Object {
     dynamic var tempMin = ""
     dynamic var image = ""
     dynamic var shortDay = ""
+    dynamic var icon = ""
 }

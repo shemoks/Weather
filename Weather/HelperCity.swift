@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 import RealmSwift
 class HelperCity {
-    
+
     static func findCity(cityName: String) -> Bool {
-        
-        let realm = try! Realm()
-        let queryCity = realm.objects(CityModel.self).filter("name = '\(cityName)'")
-        if queryCity.isEmpty {
-            return false
-        }
-        return true
+    
+    let realm = try! Realm()
+    let queryCity = realm.objects(CityModel.self).filter("name = '\(cityName)'")
+    if queryCity.isEmpty {
+        return false
     }
+    return true
+}
     static func addToDataBase(obj: CityModel ) {
         try! Realm().write() {
             try! Realm().add(obj)
@@ -28,8 +28,8 @@ class HelperCity {
     
     static func getAllCity() -> [CityModel] {
         let objs: Results<CityModel> = {
-            try! Realm().objects(CityModel)
-        }()
+        try! Realm().objects(CityModel)
+    }()
         return Array(objs)
     }
     
@@ -41,7 +41,7 @@ class HelperCity {
     }
     
     static func deleteObject(obj: CityModel ) {
-        try! Realm().write() {
+          try! Realm().write() {
             try! Realm().delete(obj)
         }
     }

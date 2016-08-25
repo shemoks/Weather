@@ -15,6 +15,7 @@ struct weather {
     var dayValue: Int
     var monthValue: Int
     var yearValue: Int
+    var icon: String
     
 }
 
@@ -41,7 +42,7 @@ class JsonClass {
     
     func parsJson(completion: ([weather]) -> ()){
         var arrayOfObjects: [weather] = []
-        var objectWeather = weather(weekdayShort: "", hight: "", low: "", titleLong: "", conditions: "", iconUrl: "", dayValue: 0, monthValue: 0, yearValue: 0)
+        var objectWeather = weather(weekdayShort: "", hight: "", low: "", titleLong: "", conditions: "", iconUrl: "", dayValue: 0, monthValue: 0, yearValue: 0, icon: "")
         if let stringURL = NSURL(string: self.concatURLForCity(userKey, long: self.longitude, lat: self.latitude)) {
             Alamofire.request(.GET, stringURL).validate()
                 .responseJSON { response in
@@ -50,9 +51,8 @@ class JsonClass {
                         print("Validation Successful")
                         if let value = response.result.value {
                             let json = JSON(value)
-                            
                             for day in json["forecast"]["simpleforecast"]["forecastday"].arrayValue {
-                                
+                                print("\(json)")
                                 let name = day["date"]["weekday_short"].stringValue
                                 objectWeather.weekdayShort = name
                                 let titleLong = day["date"]["tz_long"].stringValue
@@ -71,6 +71,8 @@ class JsonClass {
                                 objectWeather.conditions = conditions
                                 let iconUrl = day["icon_url"].stringValue
                                 objectWeather.iconUrl = iconUrl
+                                let icon = day["icon"].stringValue
+                                objectWeather.icon = icon
                                 arrayOfObjects.append(objectWeather)
                             }
                             dispatch_async(dispatch_get_main_queue(), {

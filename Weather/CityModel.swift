@@ -38,6 +38,8 @@ class CityModel: Object{
                     temperature.tempMax = objects[index].hight
                     temperature.tempMin = objects[index].low
                     temperature.shortDay = objects[index].weekdayShort
+                    temperature.icon = objects[index].icon
+                   
                     arrayOfTemperature.append(temperature)
                 }
                 let countCity = HelperCity.countByName(city)

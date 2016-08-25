@@ -10,8 +10,15 @@ import Foundation
 import UIKit
 class ConteinerView: UIViewController {
     
+  
+    @IBAction func showTable(sender: AnyObject) {
+        
+   //     performSegueWithIdentifier("showTable", sender: self)
+        
+    }
     @IBOutlet weak var conteiner: UIView!
     var embeddedPageController: PageViewController!
+    var tableViewController: TableViewController!
     
     @IBAction func removePage(sender: AnyObject) {
         embeddedPageController.removeView(embeddedPageController)
@@ -21,6 +28,12 @@ class ConteinerView: UIViewController {
         if let vc = segue.destinationViewController as? PageViewController
             where segue.identifier == "toPageViewController" {
             self.embeddedPageController = vc
+        }
+        if let vc = segue.destinationViewController as? TableViewController
+            where segue.identifier == "showTable" {
+            self.tableViewController = vc
+            let arrayCity = HelperCity.getAllCity()
+            self.tableViewController.arrayCity = arrayCity
         }
     }
 }

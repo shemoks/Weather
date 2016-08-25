@@ -28,6 +28,9 @@
 		9A8B17D91D6B242500FB27AC /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17D81D6B242500FB27AC /* CityModel.swift */; };
 		9A8B17DB1D6B2BE200FB27AC /* HelperCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17DA1D6B2BE200FB27AC /* HelperCity.swift */; };
 		9A8B17DF1D6B341C00FB27AC /* TemperatureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17DE1D6B341C00FB27AC /* TemperatureModel.swift */; };
+		9A8B17E31D6C813F00FB27AC /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B17E21D6C813F00FB27AC /* TableViewController.swift */; };
+		9ADADEB41D6EE2AA00111FDB /* CItyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADADEB31D6EE2AA00111FDB /* CItyCell.swift */; };
+		9ADADEB61D6EE2D300111FDB /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ADADEB51D6EE2D300111FDB /* CityCell.xib */; };
 		A7B4222987E007FD83F4D0D8 /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A283DE68E0A6171A77B47956 /* Pods_Weather.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +94,9 @@
 		9A8B17D81D6B242500FB27AC /* CityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		9A8B17DA1D6B2BE200FB27AC /* HelperCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperCity.swift; sourceTree = "<group>"; };
 		9A8B17DE1D6B341C00FB27AC /* TemperatureModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureModel.swift; sourceTree = "<group>"; };
+		9A8B17E21D6C813F00FB27AC /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		9ADADEB31D6EE2AA00111FDB /* CItyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CItyCell.swift; sourceTree = "<group>"; };
+		9ADADEB51D6EE2D300111FDB /* CityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
 		A283DE68E0A6171A77B47956 /* Pods_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -165,6 +171,9 @@
 				9A8B17D81D6B242500FB27AC /* CityModel.swift */,
 				9A8B17DA1D6B2BE200FB27AC /* HelperCity.swift */,
 				9A8B17DE1D6B341C00FB27AC /* TemperatureModel.swift */,
+				9A8B17E21D6C813F00FB27AC /* TableViewController.swift */,
+				9ADADEB31D6EE2AA00111FDB /* CItyCell.swift */,
+				9ADADEB51D6EE2D300111FDB /* CityCell.xib */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -313,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ADADEB61D6EE2D300111FDB /* CityCell.xib in Resources */,
 				9A8B17AD1D5B0FFF00FB27AC /* Main.storyboard in Resources */,
 				9A8B17861D59BB6100FB27AC /* LaunchScreen.storyboard in Resources */,
 				9A8B17831D59BB6100FB27AC /* Assets.xcassets in Resources */,
@@ -403,12 +413,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A8B17DB1D6B2BE200FB27AC /* HelperCity.swift in Sources */,
+				9ADADEB41D6EE2AA00111FDB /* CItyCell.swift in Sources */,
 				9A8B177E1D59BB6100FB27AC /* ViewController.swift in Sources */,
 				9A8B17B11D5B265C00FB27AC /* JsonClass.swift in Sources */,
 				9A8B17B51D5C6CF900FB27AC /* CollectionViewCell.swift in Sources */,
 				9A8B17D71D67496F00FB27AC /* ConteinerView.swift in Sources */,
 				9A8B17B31D5B337E00FB27AC /* UserLocation.swift in Sources */,
 				9A8B177C1D59BB6100FB27AC /* AppDelegate.swift in Sources */,
+				9A8B17E31D6C813F00FB27AC /* TableViewController.swift in Sources */,
 				9A8B17D91D6B242500FB27AC /* CityModel.swift in Sources */,
 				9A8B17DF1D6B341C00FB27AC /* TemperatureModel.swift in Sources */,
 				9A8B17AF1D5B109A00FB27AC /* MapViewController.swift in Sources */,
