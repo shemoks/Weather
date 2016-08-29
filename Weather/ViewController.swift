@@ -5,6 +5,22 @@
 //  Created by Mac on 8/9/16.
 //  Copyright © 2016 Mac. All rights reserved.
 //
+public enum PictureWeather: String {
+case cloudy = "clody"
+case clear = "clear"
+case chancerain = "chancerain"
+case chancetstorms = "chancetstorms"
+    func picture() -> UIImage {
+        var image: UIImage
+        switch self {
+        case .cloudy: image = UIImage(named: "cloudy.jpg")!
+        case .clear: image = UIImage(named: "weather_3")!
+        case .chancerain: image = UIImage(named: "rain.jpg")!
+        case .chancetstorms: image = UIImage(named: "groza.jpg")!
+       }
+    return image
+    }
+}
 
 import UIKit
 import CoreLocation
@@ -21,7 +37,6 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     @IBOutlet weak var collectionView: UICollectionView?
     var dayWeather = CityModel()
     var pageIndex: Int = 0
-    var arrayImage = ["weather_3","cloudy.jpg","groza.jpg","rain.jpg"]
     var defaultCoord = location(long: 0, lat: 0)
     
     
@@ -52,14 +67,21 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         self.city.text = dayWeather.name
         let date: String = String(dayWeather.temperature[indexDay].day) + "." + String(dayWeather.temperature[indexDay].month) + "."  + String(dayWeather.temperature[indexDay].year)
         self.dayWeek.text = date
-        switch dayWeather.temperature[indexDay].icon {
-        case "cloudy": self.fonImage.image = UIImage(named: arrayImage[0])
-        case "clear": self.fonImage.image = UIImage(named: arrayImage[1])
-        case "chancerain": self.fonImage.image = UIImage(named: arrayImage[2])
-        
-        
-        default: self.fonImage.image = UIImage(named: arrayImage[0])
-        }
+     
+        UIView.transitionWithView(self.fonImage, duration: 0.325, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            
+            let pictureValue: PictureWeather.RawValue = dayWeather.temperature[indexDay].icon
+            if  let value: PictureWeather = PictureWeather(rawValue: pictureValue) {
+                self.fonImage.image = value.picture()
+            } else {
+                self.fonImage.image = UIImage(named: "weather_3")
+            }
+            
+            }, completion: { (finished: Bool) -> () in
+                
+                // completion
+                
+        })
     }
     
     override func didReceiveMemoryWarning() {

@@ -12,7 +12,7 @@ import CoreLocation
 
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
-    var arrayData: [CityModel] = []
+    var arrayData: Results<CityModel>!
     var defaultCoord = location(long: 0, lat: 0)
     var count = 0
     var orderedViewControllers: [UIViewController] = []
@@ -98,12 +98,21 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func sourceForViewNext() {
-        var firstElement: [UIViewController] = []
-        firstElement.append(orderedViewControllers[0])
-        self.setViewControllers( firstElement as [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+//        var firstElement: [UIViewController] = []
+//        firstElement.append(orderedViewControllers[0])
+//        self.setViewControllers( firstElement as [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+        
+      
+        if let firstViewController = orderedViewControllers.first {
+            setViewControllers([firstViewController],
+                               direction: .Forward,
+                               animated: true,
+                               completion: nil)
+        }
+
     }
     
-    func dataForViewController (getData: ([CityModel]) -> ()) {
+    func dataForViewController (getData: (Results<CityModel>) -> ()) {
         let cities = HelperCity.getAllCity()
         arrayData = cities
         dispatch_async(dispatch_get_main_queue(), {

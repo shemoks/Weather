@@ -26,11 +26,11 @@ class HelperCity {
         }
     }
     
-    static func getAllCity() -> [CityModel] {
+    static func getAllCity() ->  Results<CityModel> {
         let objs: Results<CityModel> = {
         try! Realm().objects(CityModel)
     }()
-        return Array(objs)
+        return objs
     }
     
     static func deleteByName(name: String) {
