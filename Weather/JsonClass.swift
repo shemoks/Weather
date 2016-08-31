@@ -52,7 +52,8 @@ class JsonClass {
                         if let value = response.result.value {
                             let json = JSON(value)
                             for day in json["forecast"]["simpleforecast"]["forecastday"].arrayValue {
-                             //   print("\(json)")
+                           print("\(json)")
+                                print("-----------------------------------------------------")
                                 let name = day["date"]["weekday_short"].stringValue
                                 objectWeather.weekdayShort = name
                                 let titleLong = day["date"]["tz_long"].stringValue
@@ -81,7 +82,7 @@ class JsonClass {
                         }
                     case .Failure(let error):
                         print(error)
-                    }
+                }
             }
             
         }

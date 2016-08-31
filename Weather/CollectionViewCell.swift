@@ -17,7 +17,8 @@ class CollectionViewCell: UICollectionViewCell {
         dateLabel.text = someDay.shortDay
         temperatureLabel.text = someDay.tempMax + " / " + someDay.tempMin
         let imgURL: NSURL = NSURL(string: someDay.image)!
-        let imgData: NSData = NSData(contentsOfURL: imgURL)!
+        if  let imgData: NSData = NSData(contentsOfURL: imgURL) {
         imageView.image = UIImage(data: imgData)
+    }
     }
 }

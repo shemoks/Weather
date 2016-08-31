@@ -10,18 +10,25 @@ import Foundation
 import UIKit
 class ConteinerView: UIViewController {
     
-  
+    
     @IBAction func showTable(sender: AnyObject) {
         
-   //     performSegueWithIdentifier("showTable", sender: self)
+        //     performSegueWithIdentifier("showTable", sender: self)
         
     }
+    @IBAction func refreshPages() {
+        let cities = HelperCity.getAllCity()
+        embeddedPageController.arrayData = cities
+        embeddedPageController.refresh()
+    }
+    
     @IBOutlet weak var conteiner: UIView!
     var embeddedPageController: PageViewController!
     var tableViewController: TableViewController!
+    var viewController: ViewController!
     
-    @IBAction func removePage(sender: AnyObject) {
-        embeddedPageController.removeView(embeddedPageController)
+    @IBAction func removeCurrectPage(sender: AnyObject) {
+        embeddedPageController.removeView()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

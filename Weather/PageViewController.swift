@@ -21,8 +21,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getLocation ()
+        
     }
+    
     
     func getLocation(){
         
@@ -63,24 +64,49 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     override func viewDidAppear(animated: Bool) {
-        setView()
+        
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
+            let alertController = UIAlertController(title: "Connection to Internet", message:
+                "Not connection to Internet!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okButton = UIAlertAction(title: "Ok", style: .Default) { action -> Void in
+                let count = HelperCity.getAllCity().count
+                if count == 0 {
+                    self.performSegueWithIdentifier("notInternet", sender: self)
+                } else {
+                    self.setView()
+                }
+            }
+            alertController.addAction(okButton)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+        case .Online(.WWAN), .Online(.WiFi):
+            getLocation ()
+            self.setView()
+        }
+        
+        
         
     }
     
+    
     func setView() {
         self.dataForViewController { object in
-            self.orderedViewControllers = []
-            self.controllers = []
-            self.count = object.count
-            if self.count > 0 {
-                for i in 0...self.count - 1 {
-                    let newViewController = ViewController()
-                    newViewController.pageIndex = i
-                    self.controllers.append(newViewController)
-                    let controller = self.getViewControllerAtIndex(i)
-                    self.orderedViewControllers.append(controller)
+            if !object.isEmpty {
+                self.orderedViewControllers = []
+                self.controllers = []
+                self.count = object.count
+                if self.count > 0 {
+                    for i in 0...self.count - 1 {
+                        let newViewController = ViewController()
+                        newViewController.pageIndex = i
+                        self.controllers.append(newViewController)
+                        let controller = self.getViewControllerAtIndex(i)
+                        self.orderedViewControllers.append(controller)
+                    }
+                    self.sourceForViewNext()
                 }
-                self.sourceForViewNext()
             }
         }
     }
@@ -98,18 +124,18 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func sourceForViewNext() {
-//        var firstElement: [UIViewController] = []
-//        firstElement.append(orderedViewControllers[0])
-//        self.setViewControllers( firstElement as [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+        var firstElement: [UIViewController] = []
+        firstElement.append(orderedViewControllers[0])
+        self.setViewControllers( firstElement as [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
         
-      
-        if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController],
-                               direction: .Forward,
-                               animated: true,
-                               completion: nil)
-        }
-
+        
+        //        if let firstViewController = orderedViewControllers.first {
+        //            setViewControllers([firstViewController],
+        //                               direction: .Forward,
+        //                               animated: true,
+        //                               completion: nil)
+        //        }
+        
     }
     
     func dataForViewController (getData: (Results<CityModel>) -> ()) {
@@ -124,10 +150,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     {
         // Create a new view controller and pass suitable data.
         let ViewControllers = self.storyboard?.instantiateViewControllerWithIdentifier("WeatherViewController") as! ViewController
-        
         ViewControllers.dayWeather = arrayData[index]
-        
-        
         return ViewControllers
     }
     
@@ -153,7 +176,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         return nil
     }
     
-    func removeView(pageViewController: UIPageViewController) {
+    func removeView() {
         if let firstViewController = viewControllers?.first {
             let firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController)
             if  firstViewControllerIndex > 0 { let object = arrayData[firstViewControllerIndex!]
@@ -162,5 +185,20 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         }
         
         setView()
+    }
+    
+    func refresh() {
+        var result = location(long: 0.00, lat: 0.00)
+        for city in arrayData {
+            let lon = city.temperature[0].longitude
+            let lat = city.temperature[0].latitude
+            result.lat = lat
+            result.long = lon
+            UserLocation.setUserLocation(result)
+            CityModel.addToDataBase{
+                self.arrayData = HelperCity.getAllCity()
+                self.setView()
+            }
+        }
     }
 }

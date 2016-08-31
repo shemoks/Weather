@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A6482F41D74580400C5462F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6482F31D74580400C5462F /* Reachability.swift */; };
 		9A8B177C1D59BB6100FB27AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B177B1D59BB6100FB27AC /* AppDelegate.swift */; };
 		9A8B177E1D59BB6100FB27AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B177D1D59BB6100FB27AC /* ViewController.swift */; };
 		9A8B17831D59BB6100FB27AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A8B17821D59BB6100FB27AC /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 /* Begin PBXFileReference section */
 		0BEBFD18BAC595403D618CB0 /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		3273A51649A4CC0E60F65ACE /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
+		9A6482F31D74580400C5462F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		9A8B17781D59BB6100FB27AC /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A8B177B1D59BB6100FB27AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A8B177D1D59BB6100FB27AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				9A8B17E21D6C813F00FB27AC /* TableViewController.swift */,
 				9ADADEB31D6EE2AA00111FDB /* CItyCell.swift */,
 				9ADADEB51D6EE2D300111FDB /* CityCell.xib */,
+				9A6482F31D74580400C5462F /* Reachability.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A6482F41D74580400C5462F /* Reachability.swift in Sources */,
 				9A8B17DB1D6B2BE200FB27AC /* HelperCity.swift in Sources */,
 				9ADADEB41D6EE2AA00111FDB /* CItyCell.swift in Sources */,
 				9A8B177E1D59BB6100FB27AC /* ViewController.swift in Sources */,

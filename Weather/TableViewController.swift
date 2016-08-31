@@ -73,9 +73,9 @@ class TableViewController: UITableViewController {
         cell!.nameLabel.text = arrayCity[indexPath.row].name
         cell!.temperatureLabel.text = arrayCity[indexPath.row].temperature[0].tempMax + "/" + arrayCity[indexPath.row].temperature[0].tempMin
         let imgURL: NSURL = NSURL(string: arrayCity[indexPath.row].temperature[0].image)!
-        let imgData: NSData = NSData(contentsOfURL: imgURL)!
+        if   let imgData: NSData = NSData(contentsOfURL: imgURL) {
         cell!.temperatureImage.image =  UIImage(data: imgData)
-        
+        }
         
         
         

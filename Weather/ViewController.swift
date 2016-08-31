@@ -50,19 +50,22 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 70, height: 150)
+//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+//        layout.itemSize = CGSize(width: 70, height: 150)
         collectionView!.dataSource = self
         collectionView!.delegate = self
-        collectionView!.setCollectionViewLayout(layout, animated: false)
+   //     collectionView!.setCollectionViewLayout(layout, animated: false)
         self.dataView(dayWeather, indexDay: 0)
     }
    
     func dataView(dayWeather: CityModel, indexDay: Int) {
-        let imgURL: NSURL = NSURL(string: dayWeather.temperature[indexDay].image)!
-        let imgData: NSData = NSData(contentsOfURL: imgURL)!
+        if dayWeather != [] {
+        if  let imgURL: NSURL = NSURL(string: dayWeather.temperature[indexDay].image) {
+            if  let imgData: NSData = NSData(contentsOfURL: imgURL) {
         self.imageGeneral.image = UIImage(data: imgData)
+        }
+        }
         self.tempGeneral.text = dayWeather.temperature[indexDay].tempMax
         self.city.text = dayWeather.name
         let date: String = String(dayWeather.temperature[indexDay].day) + "." + String(dayWeather.temperature[indexDay].month) + "."  + String(dayWeather.temperature[indexDay].year)
@@ -82,6 +85,13 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
                 // completion
                 
         })
+        } else {
+            let alertController = UIAlertController(title: "iOScreator", message:
+                "Hello, world!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
